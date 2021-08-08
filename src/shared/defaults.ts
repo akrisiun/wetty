@@ -13,7 +13,7 @@ export const sshDefault: SSH = {
 
 export const serverDefault: Server = {
   base: process.env.BASE || '/wetty/',
-  port: parseInt(process.env.PORT || '3000', 10),
+  port: parseInt(process.env.PORT || '3030', 10),
   host: '0.0.0.0',
   title: process.env.TITLE || 'WeTTy - The Web Terminal Emulator',
   allowIframe: false,

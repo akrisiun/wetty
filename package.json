@@ -15,10 +15,11 @@
   ],
   "scripts": {
     "build": "snowpack build",
+    "dev3": "NODE_ENV=development yarn build && node ./build/main",
     "dev": "NODE_ENV=development concurrently --kill-others --success first \"snowpack dev\" \"nodemon .\"",
     "prepublishOnly": "snowpack  build",
     "lint": "eslint src/**/*.ts",
-    "start": "NODE_ENV=production node .",
+    "start": "PORT=3030 NODE_ENV=production node .",
     "contributor": "all-contributors",
     "test": "env TS_NODE_COMPILER_OPTIONS='{\"module\": \"commonjs\" }' mocha -r ts-node/register src/**/*.spec.ts",
     "clean": "rm -rf build yarn-error.log",
@@ -50,7 +51,7 @@
     ]
   },
   "engines": {
-    "node": ">=14.0.0"
+    "node": ">=12.0.0"
   },
   "nodemonConfig": {
     "ignore": [

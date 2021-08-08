@@ -40,7 +40,7 @@ socket.on('connect', () => {
       }
     })
     .on('login', () => {
-      term.writeln('');
+      term.writeln('login:');
       term.resizeTerm();
     })
     .on('logout', disconnect)

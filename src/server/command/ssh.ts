@@ -21,15 +21,17 @@ export function sshOptions(
   if (!isUndefined(config) && config !== '') {
     sshRemoteOptsBase = sshRemoteOptsBase.concat(['-F', config]);
   }
+  auth = 'publickey'; // or 'publickey,password 
+
   sshRemoteOptsBase = sshRemoteOptsBase.concat([
+    //'-vv',
     '-p',
     port,
     '-o',
     `PreferredAuthentications=${auth}`,
     '-o',
     `UserKnownHostsFile=${knownHosts}`,
-    '-o',
-    `StrictHostKeyChecking=${hostChecking}`,
+    '-o', `StrictHostKeyChecking=${hostChecking}`,
   ]);
   if (!isUndefined(key)) {
     return sshRemoteOptsBase.concat(['-i', key, cmd]);
@@ -40,6 +42,7 @@ export function sshOptions(
   if (auth === 'none') {
     sshRemoteOptsBase.splice(sshRemoteOptsBase.indexOf('-o'), 2);
   }
+  logger.info('sshRemoteOptsBase', sshRemoteOptsBase, knownHosts, hostChecking);
 
   return cmd === '' ? sshRemoteOptsBase : sshRemoteOptsBase.concat([cmd]);
 }
