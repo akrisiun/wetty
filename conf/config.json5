@@ -2,7 +2,7 @@
   ssh: {
     // user:    'username',                     // default user to use when ssh-ing
     host:       'localhost',                    // Server to ssh to
-    auth:       'password',                     // shh authentication, method. Defaults to "password", you can use "publickey,password" instead'
+    auth:       'publickey',                     // shh authentication, method. Defaults to "password", you can use "publickey,password" instead'
     // pass:    "password",                     // Password to use when sshing
     // key:     "",                             // path to an optional client private key, connection will be password-less and insecure!
     port:       22,                             // Port to ssh to

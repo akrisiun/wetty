@@ -2,8 +2,9 @@
   "name": "wetty-prod",
   "version": "2.0.4",
   "main": "../build/main.js",
+  "type": "module",
   "scripts": {
-    "dev3": "NODE_ENV=development yarn build && node ../build/main",
+    "dev3": "NODE_ENV=development yarn && node ../build/main"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.25",
