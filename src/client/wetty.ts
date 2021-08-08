@@ -15,6 +15,7 @@ library.add(faCogs);
 dom.watch();
 
 socket.on('connect', () => {
+  
   const term = terminal(socket);
   if (_.isUndefined(term)) return;
 

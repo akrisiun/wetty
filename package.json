@@ -14,12 +14,13 @@
     "build/"
   ],
   "scripts": {
-    "build": "snowpack build",
+    "build": "snowpack build --verbose",
     "dev3": "NODE_ENV=development yarn build && node ./build/main",
     "dev": "NODE_ENV=development concurrently --kill-others --success first \"snowpack dev\" \"nodemon .\"",
     "prepublishOnly": "snowpack  build",
     "lint": "eslint src/**/*.ts",
     "start": "PORT=3030 NODE_ENV=production node .",
+    "zip": "cp -R build prod && zip -r wetty-prod.zip prod",
     "contributor": "all-contributors",
     "test": "env TS_NODE_COMPILER_OPTIONS='{\"module\": \"commonjs\" }' mocha -r ts-node/register src/**/*.spec.ts",
     "clean": "rm -rf build yarn-error.log",
@@ -74,6 +75,9 @@
       "src/client/**/*.spec.ts",
       "src/*.ts"
     ],
+    "packageOptions": {
+      "source": "remote"
+    },
     "plugins": [
       [
         "@snowpack/plugin-run-script",

@@ -12,6 +12,13 @@ import {
   defaultCommand,
 } from './defaults.js';
 
+var fromEntries = function (iterable: Array<any>) { // [Symbol.iterator]()) {
+  return [...iterable].reduce((obj, [key, val]) => {
+    obj[key] = val
+    return obj
+  }, {})
+};
+
 type confValue =
   | boolean
   | string
@@ -86,7 +93,7 @@ const objectAssign = (
   target: SSH | Server,
   source: Record<string, confValue>,
 ): SSH | Server =>
-  Object.fromEntries(
+  fromEntries(
     Object.entries(source).map(([key, value]) => [
       key,
       isUndefined(source[key]) ? target[key] : value,
