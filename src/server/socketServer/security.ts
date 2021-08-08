@@ -1,12 +1,12 @@
-import helmet from 'helmet';
+// import helmet from 'helmet';
 import type { Request, Response } from 'express';
 
-export const policies = (allowIframe: boolean) => (
+export const policies = () => ( // (allowIframe: boolean) => (
   req: Request,
   res: Response,
-  next: (err?: unknown) => void,
+  next: (err: unknown, res2: unknown) => void,
 ) => {
-  helmet({
+  /* helmet({
     frameguard: allowIframe ? false : { action: 'sameorigin' },
     referrerPolicy: { policy: ['no-referrer-when-downgrade'] },
     contentSecurityPolicy: {
@@ -21,5 +21,7 @@ export const policies = (allowIframe: boolean) => (
         ],
       },
     },
-  })(req, res, next);
+  })
+  (req, res, next); */
+  next(req, res);
 };

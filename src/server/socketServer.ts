@@ -9,7 +9,7 @@ import { html } from './socketServer/html.js';
 import { listen } from './socketServer/socket.js';
 import { logger } from '../shared/logger.js';
 import { serveStatic, trim } from './socketServer/assets.js';
-import { policies } from './socketServer/security.js';
+// import { policies } from './socketServer/security.js';
 import { loadSSL } from './socketServer/ssl.js';
 
 export async function server(
@@ -26,6 +26,9 @@ export async function server(
 
   const app = express();
   const client = html(basePath, title);
+
+  if (allowIframe) {}
+
   app
     .use(`${basePath}/web_modules`, serveStatic('web_modules'))
     .use(`${basePath}/assets`, serveStatic('assets'))
@@ -34,7 +37,7 @@ export async function server(
     .use(compression())
     .use(favicon(basePath))
     .use(redirect)
-    .use(policies(allowIframe))
+    // .use(policies(allowIframe))
     .get(basePath, client)
     .get(`${basePath}/ssh/:user`, client);
 

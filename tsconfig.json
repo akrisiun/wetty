@@ -3,6 +3,7 @@
     "module": "esnext",
     "target": "es2019",
     "moduleResolution": "node",
+    "resolveJsonModule": true,
     "declaration": true,
     "downlevelIteration": true,
     "esModuleInterop": true,
